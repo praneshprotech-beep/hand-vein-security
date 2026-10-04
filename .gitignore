@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+
+/auth_logs.json
+/hand_vein_db.json
+/data/
+/static/uploads/
+/uploads/

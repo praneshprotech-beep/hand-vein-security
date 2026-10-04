@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard - Hand Vein Biometrics</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f0ebe9, #e2e1db);
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      color: black;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #ff6600;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #cc5200;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Admin Dashboard</h2>
+    <h3>Registered Users</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Passport ID</th>
+        <th>Nationality</th>
+      </tr>
+      {% for name, details in users.items() %}
+      <tr>
+        <td>{{ name }}</td>
+        <td>{{ details.passport_id }}</td>
+        <td>{{ details.nationality }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h3>Authentication Logs</h3>
+    <table>
+      <tr>
+        <th>Timestamp</th>
+        <th>User</th>
+        <th>Status</th>
+        <th>Details</th>
+        <th>IP Address</th>
+      </tr>
+      {% for log in logs %}
+      <tr>
+        <td>{{ log.timestamp }}</td>
+        <td>{{ log.user }}</td>
+        <td>{{ log.status }}</td>
+        <td>{{ log.details }}</td>
+        <td>{{ log.ip }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="{{ url_for('home') }}" class="button">Back to Home</a>
+    <a href="{{ url_for('logout') }}" class="button">Logout</a>
+  </div>
+</body>
+</html>

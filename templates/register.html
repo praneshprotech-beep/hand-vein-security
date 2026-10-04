@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - Hand Vein Biometrics</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #7c3aed;
+      --accent: #06b6d4;
+      --light: #ffffff;
+      --dark: #0f172a;
+      --text-secondary: #64748b;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff, #ffffff);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    /* Container with split layout */
+    .registration-container {
+      max-width: 900px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    /* Left section with image */
+    .image-section {
+      flex: 1 1 50%;
+      background: url('https://media.cntraveler.com/photos/53daaa376dec627b149fa0c2/16:9/w_1280,c_limit/airport-security.jpg') no-repeat center center;
+      background-size: cover;
+      min-height: 400px;
+      position: relative;
+    }
+    
+    /* Optional overlay text on the image */
+    .image-section::after {
+      content: "Welcome to AirSecure";
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: var(--light);
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+    
+    /* Right section with form */
+    .form-section {
+      flex: 1 1 50%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .form-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--dark);
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      background: var(--primary);
+      color: var(--light);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+    
+    .form-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+    
+    .form-footer {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    .form-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .registration-container {
+        flex-direction: column;
+      }
+      .image-section {
+        min-height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="registration-container">
+    <div class="image-section">
+      <!-- Image section: replace the URL with your own image if desired -->
+    </div>
+    <div class="form-section">
+      <h2>Register</h2>
+      <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" name="name" id="name" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <label for="passport_id">Passport ID</label>
+          <input type="text" name="passport_id" id="passport_id" placeholder="Passport ID" required>
+        </div>
+        <div class="form-group">
+          <label for="nationality">Nationality</label>
+          <input type="text" name="nationality" id="nationality" placeholder="Nationality" required>
+        </div>
+        <div class="form-group">
+          <label for="fingerprint">Upload Fingerprint Image</label>
+          <input type="file" name="fingerprint" id="fingerprint" accept="image/*" required>
+        </div>
+        <input type="submit" value="Register" class="form-submit">
+      </form>
+      <div class="form-footer">
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hand Vein Biometrics - Airport Security</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #7c3aed;
+      --accent: #06b6d4;
+      --light: #ffffff;
+      --dark: #0f172a;
+      --text-secondary: #64748b;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff, #ffffff);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 40px;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo i {
+      margin-right: 10px;
+    }
+    
+    .admin-link {
+      font-size: 0.9rem;
+      color: var(--light);
+      background: var(--accent);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    
+    .admin-link:hover {
+      background: var(--primary-dark);
+    }
+    
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 120px 20px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      /* Background image with dark overlay */
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://www.travelmole.com/wp-content/uploads/2022/10/Southampton_Airport-scaled.jpg') no-repeat center center/cover;
+      color: var(--light);
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: var(--light);
+    }
+    
+    .actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--primary);
+      color: var(--light);
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+    
+    .btn-secondary {
+      background: var(--secondary);
+    }
+    
+    .btn-secondary:hover {
+      background: #6d28d9;
+    }
+    
+    .btn-icon {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .btn-icon i {
+      font-size: 1.2rem;
+    }
+    
+    /* Scroll Down Arrow */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: var(--light);
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -10px); }
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+      margin: 0 auto 20px;
+    }
+    
+    .feature-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .feature-card h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+    
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--card-bg);
+      border-top: 1px solid #e5e7eb;
+      margin-top: 40px;
+    }
+    
+    footer .footer-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    footer .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    footer .footer-links a:hover {
+      color: var(--dark);
+      text-decoration: underline;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo"><i class="fas fa-fingerprint"></i> AirSecure</div>
+      <a href="{{ url_for('admin_login') }}" class="admin-link"><i class="fas fa-lock"></i> Admin</a>
+    </header>
+    
+    <section class="hero">
+      <h1>Next-Gen Airport Security</h1>
+      <p>Experience seamless travel with advanced hand vein biometrics authentication. A faster, more secure way to verify your identity at airports worldwide.</p>
+      <div class="actions">
+        <a href="{{ url_for('register') }}" class="btn btn-icon"><i class="fas fa-user-plus"></i> Register</a>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary btn-icon"><i class="fas fa-sign-in-alt"></i> Login</a>
+      </div>
+      <div class="scroll-down" onclick="document.querySelector('.features').scrollIntoView({behavior: 'smooth'})">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+    
+    <section class="features">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-fingerprint"></i></div>
+        <h2>Biometric Security</h2>
+        <p>Unique hand vein patterns provide the highest level of security and fraud prevention at checkpoints.</p>
+        <a href="#" class="btn btn-icon"><i class="fas fa-shield-alt"></i> Learn More</a>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-plane-departure"></i></div>
+        <h2>Express Boarding</h2>
+        <p>Cut boarding time by up to 70% with instant verification. No more waiting in long security lines.</p>
+        <a href="#" class="btn btn-icon"><i class="fas fa-clock"></i> See How</a>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-globe"></i></div>
+        <h2>Global Access</h2>
+        <p>Single registration works at over 200 international airports. Travel worldwide with ease.</p>
+        <a href="#" class="btn btn-icon"><i class="fas fa-map-marker-alt"></i> View Locations</a>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-lock"></i></div>
+        <h2>Privacy First</h2>
+        <p>Your biometric data is encrypted with military-grade protection. Your privacy is our priority.</p>
+        <a href="#" class="btn btn-icon"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-headset"></i></div>
+        <h2>24/7 Support</h2>
+        <p>Our dedicated team is available around the clock to assist with any questions or concerns.</p>
+        <a href="#" class="btn btn-icon"><i class="fas fa-comments"></i> Contact Us</a>
+      </div>
+    </section>
+    
+    <footer>
+      <div>&copy; 2025 AirSecure Hand Vein Biometrics | All Rights Reserved</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
